@@ -1,3 +1,4 @@
+#include <inttypes.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,7 +34,7 @@ int main(int argc, char **argv) {
     } else {
       value = r62_decode(argv[3]);
     }
-    printf("%w64u\n", value);
+    printf("%" PRIu64 "\n", value);
   } else {
     printf("Unknown command: %s\n", argv[2]);
     return 1;

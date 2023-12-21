@@ -3,6 +3,9 @@
 #include <stdint.h>
 #include <string.h>
 
+// #define DEBUG_(x) x
+#define DEBUG_(x)
+
 const char r62_alphabet[] =
     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -18,6 +21,12 @@ const char r36_alphabet[] = "0123456789abcdefghijklmnopqrstuvwxyz";
       quotient = quotient / radix_;                    \
       buf[index] = r##radix_##_alphabet[remainder];    \
       index++;                                         \
+    }                                                  \
+    /* now reverse the result */                       \
+    for (uint64_t i = 0; i < index / 2; i++) {         \
+      char tmp = buf[i];                               \
+      buf[i] = buf[index - i - 1];                     \
+      buf[index - i - 1] = tmp;                        \
     }                                                  \
     buf[index] = '\0';                                 \
   }
@@ -36,6 +45,9 @@ const char r36_alphabet[] = "0123456789abcdefghijklmnopqrstuvwxyz";
     int index = strlen(buf) - 1; /* start at the end */        \
     uint64_t power = 1;                                        \
     while (index >= 0) {                                       \
+      DEBUG_(printf("decoding %c\n", buf[index]));             \
+      uint64_t alpha = r##radix_##_alphabet_index(buf[index]); \
+      DEBUG_(printf("alpha: %lu\n", alpha));                   \
       value += r##radix_##_alphabet_index(buf[index]) * power; \
       power *= radix_;                                         \
       index--;                                                 \

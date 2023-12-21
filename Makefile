@@ -17,7 +17,7 @@ test: $(BUILDDIR)/main
 	rm -f $(BUILDDIR)/expected.txt
 	cat test.txt | while read line ; do $< $$line | tee -a $(BUILDDIR)/expected.txt; done
 	diff -u0 $(BUILDDIR)/expected.txt expected.txt
-	echo "Test passed"
+	echo "\n=== Test passed ==="
 
 .PHONY: snapshot-update
 snapshot-update: $(BUILDDIR)/main
