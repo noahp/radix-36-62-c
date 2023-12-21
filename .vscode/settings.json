@@ -1,3 +1,32 @@
 {
-    "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.excalidraw": "json",
+    "*.excalidrawlib": "json",
+    "*.mdx": "markdown",
+    "optional": "c",
+    "ratio": "c",
+    "system_error": "c",
+    "array": "c",
+    "functional": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "utility": "c",
+    "variant": "c",
+    "charconv": "c",
+    "chrono": "c",
+    "format": "c",
+    "__bit_reference": "c",
+    "__node_handle": "c",
+    "atomic": "c",
+    "bitset": "c",
+    "deque": "c",
+    "__memory": "c",
+    "limits": "c",
+    "locale": "c",
+    "vector": "c",
+    "random": "c",
+    "__locale": "c",
+    "numeric": "c"
+  }
 }
