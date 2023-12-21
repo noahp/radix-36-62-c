@@ -1,0 +1,9 @@
+36 decode 0
+36 decode 3z141z1
+36 decode wikipedia
+36 encode 0xffffffff
+36 encode 4294967295
+62 decode 0
+62 decode fyha61AhGYl
+62 encode 0xffffffffffffffff
+62 encode 18446744073709551615

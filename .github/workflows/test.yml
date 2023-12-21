@@ -1,0 +1,17 @@
+# Run the 'make test' command for prs + merges to master, via github actions
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run test
+        run: |
+          make test
