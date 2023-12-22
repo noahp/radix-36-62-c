@@ -46,7 +46,9 @@ test: $(BUILDDIR)/main
 	echo "\n=== Test passed ==="
 # generate lcov report
 	lcov --capture --directory . --no-external --output-file $(BUILDDIR)/coverage.info
-	genhtml $(BUILDDIR)/coverage.info --exclude main.c --output-directory $(BUILDDIR)/coverage
+# filter out main.c. on lcov 2 we can use 'genhtml --exclude main.c' instead 🥲
+	lcov --remove $(BUILDDIR)/coverage.info "main.c" --output-file $(BUILDDIR)/coverage.info
+	genhtml $(BUILDDIR)/coverage.info --dark-mode --output-directory $(BUILDDIR)/coverage
 	echo "\n=== Coverage report ==="
 	echo "See file://$(PWD)/$(BUILDDIR)/coverage/index.html"
 

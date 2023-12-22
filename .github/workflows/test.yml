@@ -12,6 +12,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install lcov
+        run: |
+          # fetch lcov archive from github
+          LCOV_VERSION=1.16
+          wget https://github.com/linux-test-project/lcov/archive/refs/tags/v${LCOV_VERSION}.zip
+          unzip v${LCOV_VERSION}.zip
+          cd lcov-${LCOV_VERSION}
+          sudo make install
+          lcov --version
+          genhtml --version
+
       - name: Run test
         run: |
           make test
