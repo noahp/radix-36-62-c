@@ -34,9 +34,11 @@ GCOV_TOOL ?= ./llvm-cov-wrapper.sh
 endif
 
 $(BUILDDIR)/main: $(BUILDDIR)/main.o $(BUILDDIR)/r36_62.o
+	echo "Linking $@"
 	$(CC) $(CFLAGS) -o $@ $^
 
 $(BUILDDIR)/%.o: %.c
+	echo "Compiling $@"
 	@mkdir -p $(BUILDDIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
